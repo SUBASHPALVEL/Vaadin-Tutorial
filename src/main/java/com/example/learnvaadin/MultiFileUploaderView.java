@@ -38,16 +38,15 @@ public class MultiFileUploaderView extends VerticalLayout {
 
         multiUpload.addSucceededListener(event -> {
             String fileName = event.getFileName();
-            ByteArrayOutputStream fileStream = uploadedFiles.get(fileName); // Get the file stream
+            ByteArrayOutputStream fileStream = uploadedFiles.get(fileName);
             if (fileStream != null) {
-                // Process the file (display the content in this case)
-                String fileContent = fileStream.toString(); // Assuming text files for simplicity
+
+                String fileContent = fileStream.toString();
                 Notification.show("Upload succeeded: " + fileName);
                 Notification.show("File content: " + fileContent);
             }
         });
 
-        // 4. Add components to the layout
         add(title, multiUpload);
     }
 }
