@@ -2,6 +2,8 @@ package com.example.learnvaadin.views.helloworld;
 
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.router.Menu;
+import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import org.vaadin.klaudeta.PaginatedGrid;
 import com.vaadin.flow.data.provider.ListDataProvider;
@@ -9,6 +11,8 @@ import com.vaadin.flow.data.provider.ListDataProvider;
 import java.util.ArrayList;
 import java.util.List;
 
+@PageTitle("Pagination Demo")
+@Menu(icon = "line-awesome/svg/globe-solid.svg", order = 11)
 @Route("pagination-demo")
 public class PaginationDemoView extends VerticalLayout {
 
@@ -16,7 +20,7 @@ public class PaginationDemoView extends VerticalLayout {
 
         List<Person> personList = createDummyData();
 
-        PaginatedGrid<Person, String> paginatedGrid = new PaginatedGrid<>(Person.class);
+        PaginatedGrid<Person, String> paginatedGrid = new PaginatedGrid<>();
 
         ListDataProvider<Person> dataProvider = new ListDataProvider<>(personList);
         paginatedGrid.setDataProvider(dataProvider);
@@ -34,11 +38,9 @@ public class PaginationDemoView extends VerticalLayout {
 
         paginatedGrid.setPaginatorTexts("Page", "of");
 
-        // Add the grid to the layout
         add(paginatedGrid);
     }
 
-    // Helper method to create dummy data
     private List<Person> createDummyData() {
         List<Person> people = new ArrayList<>();
         for (int i = 1; i <= 100; i++) {
@@ -47,7 +49,6 @@ public class PaginationDemoView extends VerticalLayout {
         return people;
     }
 
-    // Person class
     public class Person {
         private String firstName;
         private String lastName;
