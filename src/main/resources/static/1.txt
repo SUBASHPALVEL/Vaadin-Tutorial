@@ -1,0 +1,106 @@
+HI Subash Palvel
+
+TABLE: 1
+INBOUND_DOCUMENTS_S3_REFERENCE
+---------------------------
+DOCUMENT_REFERENCE_ID (primary key)   int(10)
+FILE_NAME                             varchar(100)
+S3_REF_OCR_TEXT                       varchar(250)
+S3_REF_ACT_FILE                       varchar(250)
+DOCUMENT_TYPE                         varchar(10)
+FILE_STATUS                           varchar(10)
+CREATED_DATETIME                      timestamp
+MODIFIED_DATETIME                     timestamp
+
+---------------------------------
+TABLE: 2
+INVOICE_EXTRACTED_DETAILS
+---------------------------------
+INVOICE_EXTRACTED_DETAILS_ID (primary key)                          int(10)
+DOCUMENT_REFERENCE_ID (foreign key)(Table 1 primary key)            int(10)
+INVOICE NUMBER                                                      varchar(25)
+DATE                                                                varchar(20)                             
+DUE DATE	                                                    varchar(20)
+SUB TOTAL	                                                    varchar(20)
+TAX AMOUNT	                                                    varchar(20)
+DISCOUNT	                                                    varchar(20)
+ROUNDING	                                                    varchar(20)
+TOTAL AMOUNT                                                        varchar(20)
+CURRENCY                                                            varchar(3)	
+BANK_ACC_NO	                                                    varchar(30)
+IBAN                                                                varchar(30)
+KID                                                                 varchar(30)
+PAYMENT_TERMS                                                       varchar(255)
+SWIFT                                                               varchar(15)                                                               
+ORGANISATION_NUMBER                                                 varchar(15)        
+IS_MODIFIED                                                         tinyint(1)
+CREATED_DATETIME                                                    timestamp
+MODIFIED_DATETIME                                                   timestamp
+----------------------------------------
+TABLE: 3
+INVOICE_MODIFIED_DETAILS
+----------------------------------------
+INVOICE_MODIFIED_DETAILS_ID (primary key)                          int(10)
+INVOICE_EXTRACTED_DETAILS_ID (Foreign key)(Table 2 primary key)    int(10)
+INVOICE NUMBER                                                     varchar(25)
+DATE                                                               varchar(20)
+DUE DATE	                                                   varchar(20)
+SUB TOTAL	                                                   varchar(20)
+TAX AMOUNT	                                                   varchar(20)
+DISCOUNT	                                                   varchar(20)
+ROUNDING	                                                   varchar(20)
+TOTAL AMOUNT                                                       varchar(20)
+CURRENCY	                                                   varchar(3)
+BANK_ACC_NO	                                                   varchar(30)
+IBAN                                                               varchar(30)
+KID                                                                varchar(30)
+PAYMENT_TERMS                                                      varchar(255)
+SWIFT                                                              varchar(15)
+ORGANISATION_NUMBER                                                varchar(15)
+CREATED_DATETIME                                                   timestamp
+MODIFIED_DATETIME                                                  timestamp
+---------------------------------------
+TABLE: 4
+INBOUND_DOCUMENTS_VALIDATION_REMARKS
+----------------------------------------
+DOCUMENT_REMARKS_ID (Primary key)                                  int(10)
+INVOICE_EXTRACTED_DETAILS_ID (foreign) (Table 2 primary key)       int(10)
+EXPENSE_EXTRACTED_DETAILS_ID (foreign) (Table 5 primary key)       int(10)
+DOCUMENT_TYPE                                                      varchar(10)
+FIELD                                                              varchar(15)
+REMARK                                                             varchar(20)
+REASON                                                             varchar(500)
+CREATED_DATETIME                                                   timestamp
+MODIFIED_DATETIME                                                  timestamp
+        
+------------------------------------------
+TABLE: 5
+EXPENSE_EXTRACTED_DETAILS
+------------------------------------------
+EXPENSE_EXTRACTED_DETAILS_ID (primary key)                         int(10)
+DOCUMENT_REFERENCE_ID (foreign key)(Table 1 primary key)           int(10)
+DATE                                                               varchar(20)
+ORGANISATION_NO                                                    varchar(15)
+TIP                                                                varchar(20)
+TOTAL_AMOUNT                                                       varchar(20)
+CURRENCY                                                           varchar(3)
+PAYMENT_MODE                                                       varchar(10)
+CARD_NO                                                            varchar(20)
+IS_MODIFIED                                                        tinyint(1)
+CREATED_DATETIME                                                   timestamp
+MODIFIED_DATETIME                                                  timestamp
+------------------------------------------
+TABLE: 6
+EXPENSE_MODIFIED_DETAILS
+----------------------------------------
+EXPENSE_MODIFIED_DETAILS_ID (primary key)                         int(10)
+EXPENSE_EXTRACTED_DETAILS_ID (Foreign key) (Table 5 primary key)  int(10)
+DATE                                                              varchar(20)
+ORGANISATION_NO                                                   varchar(15)
+TIP                                                               varchar(20)
+TOTAL_AMOUNT                                                      varchar(20)
+CURRENCY                                                          varchar(3)
+PAYMENT_MODE                                                      varchar(10)
+CARD_NO                                                           varchar(20)
+CREATED_DATETIME                                                  timestamp
+MODIFIED_DATETIME                                                 timestamp
