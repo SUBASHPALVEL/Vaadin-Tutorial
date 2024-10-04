@@ -77,6 +77,12 @@
             <artifactId>vcf-pdf-viewer</artifactId>
             <version>3.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.vaadin.klaudeta</groupId>
+            <artifactId>grid-pagination</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+
     </dependencies>
 
     <repositories>
